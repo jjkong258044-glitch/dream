@@ -1,0 +1,248 @@
+:root {
+    --pink: #ed1b76;
+    --green: #037a76;
+    --dark: #242424;
+    --light: #f0f0f0;
+    --yellow: #f5a623;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Jua', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Score Board */
+#score-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid var(--pink);
+    font-size: 1.5rem;
+}
+
+.team-score {
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.a-team { background-color: #3b5998; }
+.b-team { background-color: #dc4e41; }
+
+.timer {
+    font-size: 2rem;
+    color: var(--pink);
+}
+
+/* Screens */
+#game-container {
+    flex: 1;
+    position: relative;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.content {
+    max-width: 800px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 5rem;
+    color: var(--pink);
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    color: var(--green);
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--pink);
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+button {
+    font-family: 'Jua', sans-serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.btn-start {
+    font-size: 2.5rem;
+    padding: 15px 40px;
+    background-color: var(--pink);
+    color: white;
+    box-shadow: 0 8px 0 #9d124e;
+}
+
+.btn-start:active {
+    box-shadow: 0 2px 0 #9d124e;
+    transform: translateY(6px) scale(0.98);
+}
+
+.team-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.btn-team {
+    font-size: 3rem;
+    width: 200px;
+    height: 200px;
+    color: white;
+}
+
+.btn-team.a { background-color: #3b5998; box-shadow: 0 10px 0 #2d4373; }
+.btn-team.b { background-color: #dc4e41; box-shadow: 0 10px 0 #b43f35; }
+
+/* Round 1 */
+.game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.doll-status {
+    font-size: 8rem;
+}
+
+.progress-container {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid var(--light);
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--green);
+    transition: width 0.1s;
+}
+
+.btn-action {
+    font-size: 2.5rem;
+    padding: 20px 60px;
+    background-color: var(--pink);
+    color: white;
+    box-shadow: 0 10px 0 #9d124e;
+}
+
+/* Round 2 */
+.canvas-container {
+    position: relative;
+    display: inline-block;
+    background-color: #d2b48c; /* 달고나 색상 */
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+#dalgona-canvas {
+    background-color: transparent;
+    cursor: crosshair;
+}
+
+#round2-timer {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: var(--pink);
+}
+
+/* Round 3 */
+.rope-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.rope {
+    background-color: #8b4513;
+    padding: 40px;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: 5px solid #5d2e0d;
+    cursor: pointer;
+}
+
+.rope:hover {
+    background-color: #a0522d;
+}
+
+/* Animations */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
